@@ -1,0 +1,50 @@
+
+## Data 605 - Assignment 11
+
+**Hazal Gunduz**
+
+**Using the “cars” dataset in R, build a linear model for stopping distance as a function of speed and replicate the analysis of your textbook chapter 3 (visualization, quality evaluation of the model, and residual analysis.)**
+
+**Loading Data**
+
+```{r}
+head(cars, 10)
+```
+
+
+```{r}
+summary(cars)
+```
+
+**Visualization**
+
+```{r}
+plot(cars$dist, cars$speed, main = "Speed vs Distance", col = c("green", "blue"))
+```
+
+**Quality Evaluation of the Model**
+
+```{r}
+cars_linearmodel <- lm(dist ~ speed, data = cars)
+summary(cars_linearmodel)
+```
+
+```{r}
+plot(cars, xlab = "Stopping Distance", ylab = "Speed", col = c("green", "blue"))
+abline(cars_linearmodel)
+```
+
+
+**Residual Analysis**
+
+```{r}
+plot(fitted(cars_linearmodel), resid(cars_linearmodel), col = c("green", "blue"))
+```
+
+```{r}
+qqnorm(cars_linearmodel$residuals, col = "green")
+qqline(cars_linearmodel$residuals, col = "blue")
+```
+
+RPubs = > https://rpubs.com/gunduzhazal/1026311
+
